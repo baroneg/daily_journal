@@ -1,0 +1,67 @@
+<%- include("partials/header");-%>
+
+  <div class="container-fluid">
+
+    <div class="home-title-container">
+      <h1 class="home-title"><%=date%></h1>
+    </div>
+
+    <div class="main-title-container">
+      <p class="prev-title">My Recent Posts</p>
+      <h1 class="main-title">My Journals</h1>
+    </div>
+
+    <div class="post-box">
+      <% posts.forEach(function(post){ %>
+
+      <div class="post-content">
+
+        <div class="post-title-header">
+
+          <div class="post-title">
+            <h1><%=post.title.substring(0, 100)%></h1>
+          </div>
+
+          <div class="post-title-links">
+
+            <form action="/delete/<%=post._id%>" method="post">
+              <a href="#" onclick="this.parentNode.submit();">
+                <i class="fa-solid fa-trash-can"></i> Delete
+              </a>
+            </form>
+
+            <form action="/edit/<%=post._id%>" method="get">
+              <a href="#" onclick="this.parentNode.submit();">
+                <i class="fa-solid fa-pen-to-square"></i> Edit
+              </a>
+            </form>
+
+            <a class="read-more" href="/posts/<%=post._id%>">
+              <i class="fa-brands fa-readme"></i> Read
+            </a>
+
+          </div>
+
+        </div>
+
+        <div class="post-info">
+          <p class="post-p">
+            <%=post.content.substring(0, 100) + " ..."%>
+          </p>
+        </div>
+
+        <div class="post-btn-container">
+          <a class="post-btn" href="/posts/<%=post._id%>">Read more...</a>
+          <p class="post-date"><%=post.timeStamp%></p>
+        </div>
+
+      </div>
+
+      <% }) %>
+
+    </div>
+
+
+  </div>
+
+  <%- include("partials/footer"); -%>

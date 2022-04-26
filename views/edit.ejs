@@ -1,0 +1,22 @@
+<%- include("partials/header"); -%>
+
+<div class="container-fluid">
+
+    <div class="main-title-container">
+        <h1 class="main-title">Edit Post</h1>
+    </div>
+
+
+    <form action="/edit/<%=post._id%>" method="post">
+        <div class="form-group">
+            <label>Title</label>
+            <input type="text" class="form-control form-control-lg" name="titleInput" value="<%=title%>">
+            <label>Post</label>
+            <textarea class="form-control" rows="5" cols="30" name="textInput"><%=content%></textarea>
+        </div>
+        <button type="submit" class="btn-compose" name="button">save</button>
+    </form>
+</div>
+
+
+<%- include("partials/footer"); -%>
